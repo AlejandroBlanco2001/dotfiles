@@ -22,6 +22,7 @@ Cursor/
 .cursor/
 astro/
 obsidian/
+Insomnia/
 
 # --- Dev tools ---
 go/
