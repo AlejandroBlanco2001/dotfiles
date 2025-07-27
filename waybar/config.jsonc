@@ -13,8 +13,10 @@
         "network",                                                                                                                                            
         "cpu",
         "memory",
+        "pulseaudio",
         "clock"
     ],
+    
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -48,5 +50,13 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "scroll-step": 5
     }
 }
