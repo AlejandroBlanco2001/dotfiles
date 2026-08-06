@@ -7,7 +7,7 @@
     programs.git = {
       enable = true;
       userName = "Isaac Blanco";
-      userEmail = "alex.zgz@live.com";
+      userEmail = "nuclearhands2001@gmail.com";
     };
  
     home.stateVersion = "26.05";
