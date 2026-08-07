@@ -31,6 +31,10 @@
       enableZshIntegration = true;
     };
 
+    programs.neovim.plugins = with pkgs; [
+      vimPlugins.nvim-treesiter
+    ];
+
     xdg.configFile."niri/config.kdl".source = ./config/niri/config.kdl;
 
     home.packages = with pkgs; [
