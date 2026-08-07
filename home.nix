@@ -31,16 +31,19 @@
       enableZshIntegration = true;
     };
 
-    programs.neovim.plugins = with pkgs; [
-      vimPlugins.nvim-treesiter
-    ];
-
     xdg.configFile."niri/config.kdl".source = ./config/niri/config.kdl;
+    xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-dotfiles/config/nvim";
 
     home.packages = with pkgs; [
       nil
       nixpkgs-fmt
       nodejs
+      neovim
       gcc
+      fzf
+      ripgrep
+      fd
+      lua-language-server
+      tree-sitter
     ];
 }
