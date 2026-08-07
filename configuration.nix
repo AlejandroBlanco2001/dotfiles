@@ -132,6 +132,7 @@
     neovim
     lazygit
     sbctl
+    podman-compose
   ];
 
   # Tell uv to install user level binaries onto $PATH

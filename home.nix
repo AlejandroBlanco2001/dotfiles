@@ -45,5 +45,6 @@
       fd
       lua-language-server
       tree-sitter
+      btop
     ];
 }
