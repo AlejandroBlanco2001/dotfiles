@@ -8,13 +8,19 @@
         };
 
         ghostty.url = "github:ghostty-org/ghostty";
+
+        lanzaboote = {
+          url = "github:nix-community/lanzaboote/v1.1.0";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
     
-    outputs = { self, nixpkgs, home-manager, ghostty, ... }: {
+    outputs = { self, nixpkgs, home-manager, ghostty, lanzaboote, ... }: {
         nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
            system = "x86_64-linux";
            modules = [
              ./configuration.nix
+             lanzaboote.nixosModules.lanzaboote
              home-manager.nixosModules.home-manager
              {
                  home-manager = {

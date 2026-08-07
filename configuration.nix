@@ -11,8 +11,13 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
 
   networking.hostName = "nixos-btw"; # Define your hostname.
 
@@ -124,6 +129,9 @@
     discord
     claude-code
     uv
+    neovim
+    lazygit
+    sbctl
   ];
 
   # Tell uv to install user level binaries onto $PATH
