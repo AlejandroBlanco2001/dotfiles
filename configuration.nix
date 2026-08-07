@@ -71,7 +71,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.isaac = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "podman" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -138,6 +138,15 @@
       libffi
       glibc
     ];
+  };
+
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+    };
   };
 
   fonts.packages = with pkgs; [
