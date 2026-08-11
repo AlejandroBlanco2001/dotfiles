@@ -47,7 +47,16 @@
       autoRepeatInterval = 35;
       windowManager.qtile.enable = true;
   };
-  services.displayManager.ly.enable = true;
+  services.displayManager.ly.enable = false;
+
+  services.greetd = {
+      enable = true;
+      settings.default.session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session";
+        user = "greeter";
+
+      };
+  };
 
   hardware.bluetooth = {
     enable = true;
@@ -133,6 +142,7 @@
     lazygit
     sbctl
     podman-compose
+    tuigreet
   ];
 
   # Tell uv to install user level binaries onto $PATH
