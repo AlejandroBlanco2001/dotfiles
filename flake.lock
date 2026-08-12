@@ -92,6 +92,24 @@
         "type": "github"
       }
     },
+    "grub2-themes": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1786498865,
+        "narHash": "sha256-yvnz/8Nh4iq67X27Vf2oD181SqnYi01M6VnSxBt5qcg=",
+        "owner": "vinceliuice",
+        "repo": "grub2-themes",
+        "rev": "241d3be041c2823cf2430fe2f44bca2215331d67",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vinceliuice",
+        "repo": "grub2-themes",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -173,6 +191,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1786557372,
+        "narHash": "sha256-L62AyrkueWuOWrfv90QxlrDMCwy8w/snLmGVTwkh6Bw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c216b452ca468b79700fddd61fb9187ab70edd0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1785734586,
         "narHash": "sha256-rBYNiK4XmVxmJaK40DRnmoPUpCeRXJ4DJdQ/DW2LQRU=",
         "rev": "531670d871c0e29724a02f3cbcac170adc65b58c",
@@ -211,9 +245,10 @@
     "root": {
       "inputs": {
         "ghostty": "ghostty",
+        "grub2-themes": "grub2-themes",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "rust-overlay": {
