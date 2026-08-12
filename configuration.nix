@@ -19,6 +19,12 @@
     pkiBundle = "/var/lib/sbctl";
   };
 
+  boot.loader.grub2-theme = {
+    enable = true;
+    theme = "whitesur";
+    footer = true;
+  };
+
   networking.hostName = "nixos-btw"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
