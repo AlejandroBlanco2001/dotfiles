@@ -6,8 +6,10 @@
 
     programs.git = {
       enable = true;
-      userName = "Isaac Blanco";
-      userEmail = "nuclearhands2001@gmail.com";
+      settings = {
+        user.email = "nuclearhands2001@gmail.com";
+        user.name  = "Isaac Blanco";
+      };
     };
  
     home.stateVersion = "26.05";
