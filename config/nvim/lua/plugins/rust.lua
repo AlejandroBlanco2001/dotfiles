@@ -1,30 +1,55 @@
 return {
-  -- 1. Managing Rust tools smoothly
   {
     'mrcjkb/rustaceanvim',
     version = '^5',
-    lazy = false, -- This plugin handles its own lazy loading
+    lazy = false,
     dependencies = { 'Saghen/blink.cmp' },
     config = function()
       vim.g.rustaceanvim = {
         server = {
           capabilities = require('blink.cmp').get_lsp_capabilities(),
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = { command = "clippy" },
+              cargo = { allFeatures = true },
+            },
+          },
         },
       }
     end,
   },
 
-  -- 2. Lightning-fast auto-completion engine
   {
     'Saghen/blink.cmp',
-    version = '*',                     -- Use latest stable release
+    version = '*',
     opts = {
-      keymap = { preset = 'default' }, -- Ctrl+n/Ctrl+p to navigate, Enter/Ctrl+y to confirm
+      keymap = { preset = 'default' },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
     },
   },
+
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        rust = { "rustfmt" },
+      },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+      },
+    },
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter',
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, { "rust", "toml" })
+    end,
+  },
+
   {
     'folke/trouble.nvim',
     opts = {},

@@ -155,6 +155,8 @@
     tuigreet
     cargo
     rustc
+    rustfmt
+    rust-analyzer
     ollama
     nixd
     alejandra
