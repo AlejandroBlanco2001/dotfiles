@@ -10,11 +10,24 @@ return {
                 expr = "import <nixpkgs> { }",
               },
               formatting = {
-                command = { "nixfmt" },
+                command = { "alejandra" },
               },
             },
           },
         },
+      },
+    },
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        nix = { "alejandra" },
+      },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
       },
     },
   },
