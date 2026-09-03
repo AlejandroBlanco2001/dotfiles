@@ -1,18 +1,22 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.initrd.kernelModules = ["amdgpu"];
 
   boot.lanzaboote = {
     enable = true;
@@ -48,20 +52,19 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   services.xserver = {
-      enable = true;
-      autoRepeatDelay = 200;
-      autoRepeatInterval = 35;
-      windowManager.qtile.enable = true;
+    enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35;
+    windowManager.qtile.enable = true;
   };
   services.displayManager.ly.enable = false;
 
   services.greetd = {
-      enable = true;
-      settings.default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --asterisks --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --cmd niri-session";
-        user = "greeter";
-
-      };
+    enable = true;
+    settings.default_session = {
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --asterisks --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --cmd niri-session";
+      user = "greeter";
+    };
   };
 
   hardware.bluetooth = {
@@ -70,7 +73,6 @@
   };
 
   hardware.graphics.enable = true;
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -93,7 +95,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.isaac = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "podman" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "podman"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -103,7 +105,7 @@
   programs.niri.enable = true;
   programs.dms-shell = {
     enable = true;
-    
+
     systemd = {
       enable = true;
       restartIfChanged = true;
@@ -117,7 +119,7 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
-    histSize  = 10000;
+    histSize = 10000;
 
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake .#nixos-btw";
@@ -126,13 +128,13 @@
     ohMyZsh = {
       enable = true;
       plugins = [
-         "git"
-         "z"
-         "uv"
-         "themes"
-         "rust"
+        "git"
+        "z"
+        "uv"
+        "themes"
+        "rust"
       ];
-      theme="mortalscumbag"; 
+      theme = "mortalscumbag";
     };
   };
 
@@ -158,33 +160,41 @@
     rustfmt
     rust-analyzer
     ollama
+    opencode
     nixd
     alejandra
     (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        jnoortheen.nix-ide
-        ms-python.python
-        ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-ssh
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "remote-ssh-edit";
-          publisher = "ms-vscode-remote";
-          version = "0.47.2";
-          sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
-        }
-      ];
+      vscodeExtensions = with vscode-extensions;
+        [
+          jnoortheen.nix-ide
+          ms-python.python
+          ms-azuretools.vscode-docker
+          ms-vscode-remote.remote-ssh
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "remote-ssh-edit";
+            publisher = "ms-vscode-remote";
+            version = "0.47.2";
+            sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+          }
+        ];
     })
   ];
 
   services.ollama = {
     enable = true;
     package = pkgs.ollama-rocm;
+
+    environmentVariables = {
+      OLLAMA_CONTEXT_LENGT = "8192";
+      OLLAMA_FLASH_ATTENTION = "1";
+    };
   };
 
   # Tell uv to install user level binaries onto $PATH
   environment.localBinInPath = true;
-  
+
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
@@ -208,7 +218,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-  
+
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -255,6 +265,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05"; # Did you read the comment?
-
 }
-
