@@ -163,11 +163,13 @@
     opencode
     nixd
     alejandra
+    python3Packages.debugpy
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
           jnoortheen.nix-ide
           ms-python.python
+          ms-python.debugpy
           ms-azuretools.vscode-docker
           ms-vscode-remote.remote-ssh
         ]
