@@ -163,6 +163,7 @@
     opencode
     nixd
     alejandra
+    tmux
     python3Packages.debugpy
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
