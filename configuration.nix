@@ -10,6 +10,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./dev
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -149,22 +150,16 @@
     wget
     git
     claude-code
-    uv
     neovim
     lazygit
     sbctl
     podman-compose
     tuigreet
-    cargo
-    rustc
-    rustfmt
-    rust-analyzer
     ollama
     opencode
     nixd
     alejandra
     tmux
-    python3Packages.debugpy
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
