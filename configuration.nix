@@ -155,7 +155,6 @@
     sbctl
     podman-compose
     tuigreet
-    ollama
     opencode
     nixd
     alejandra
@@ -179,16 +178,6 @@
         ];
     })
   ];
-
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-rocm;
-
-    environmentVariables = {
-      OLLAMA_CONTEXT_LENGT = "8192";
-      OLLAMA_FLASH_ATTENTION = "1";
-    };
-  };
 
   # Tell uv to install user level binaries onto $PATH
   environment.localBinInPath = true;
