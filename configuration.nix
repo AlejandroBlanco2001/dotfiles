@@ -11,6 +11,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./dev
+    ./modules/
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -157,6 +158,7 @@
     tuigreet
     opencode
     nixd
+    jq
     alejandra
     tmux
     (vscode-with-extensions.override {
