@@ -125,6 +125,13 @@
 
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake .#nixos-btw";
+      pbcopy = "wl-copy";
+      pbpaste = "wl-paste";
+      ls = "eza --icons --group-directories-first";
+      ll = "eza -l --icons --group-directories-first";
+      la = "eza -la --icons --group-directories-first";
+      lt = "eza --tree --level=2 --icons";
+      reload = "exec zsh";
     };
 
     ohMyZsh = {
@@ -161,6 +168,9 @@
     jq
     alejandra
     tmux
+    eza
+    wl-clipboard
+    moonlight-qt
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
