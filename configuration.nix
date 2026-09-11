@@ -171,6 +171,7 @@
     eza
     wl-clipboard
     moonlight-qt
+    spotify
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
