@@ -1,6 +1,7 @@
 {
   imports = [
     ./python
+    ./r
     ./rust
   ];
 }
