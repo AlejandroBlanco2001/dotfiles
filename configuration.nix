@@ -175,6 +175,7 @@
     qsv
     xwayland-satellite
     anydesk
+    discord
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
