@@ -173,6 +173,8 @@
     moonlight-qt
     spotify
     qsv
+    xwayland-satellite
+    anydesk
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
