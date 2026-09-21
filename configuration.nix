@@ -134,6 +134,10 @@
       reload = "exec zsh";
     };
 
+    interactiveShellInit = ''
+      eval "$(zoxide init zsh --cmd cd)"
+    '';
+
     ohMyZsh = {
       enable = true;
       plugins = [
@@ -176,6 +180,8 @@
     xwayland-satellite
     anydesk
     discord
+    chromium
+    zoxide
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
@@ -195,6 +201,10 @@
         ];
     })
   ];
+
+  programs.chromium = {
+    enable = true;
+  };
 
   # Tell uv to install user level binaries onto $PATH
   environment.localBinInPath = true;
