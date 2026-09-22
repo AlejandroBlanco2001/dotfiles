@@ -125,6 +125,7 @@
 
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake .#nixos-btw";
+      prune = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5";
       pbcopy = "wl-copy";
       pbpaste = "wl-paste";
       ls = "eza --icons --group-directories-first";
