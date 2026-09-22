@@ -94,6 +94,12 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 10d";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.isaac = {
     isNormalUser = true;
