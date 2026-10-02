@@ -208,6 +208,10 @@
     })
   ];
 
+  programs.steam = {
+    enable = true;
+  };
+
   programs.chromium = {
     enable = true;
   };
@@ -240,6 +244,12 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-unwrapped"
+    ];
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Some programs need SUID wrappers, can be configured further or are
