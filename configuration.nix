@@ -127,7 +127,7 @@
     histSize = 10000;
 
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake .#nixos-btw";
+      update = "cd ~/nixos-dotfiles; sudo nixos-rebuild switch --flake .#nixos-btw";
       prune = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5";
       pbcopy = "wl-copy";
       pbpaste = "wl-paste";
@@ -136,6 +136,7 @@
       la = "eza -la --icons --group-directories-first";
       lt = "eza --tree --level=2 --icons";
       reload = "exec zsh";
+      configs = "nvim ~/nixos-dotfiles";
     };
 
     interactiveShellInit = ''
