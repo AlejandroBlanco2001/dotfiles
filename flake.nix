@@ -17,6 +17,11 @@
     grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
     };
+
+    dank-greeter = {
+      url = "github:AvengeMedia/dank-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -26,6 +31,7 @@
     ghostty,
     lanzaboote,
     grub2-themes,
+    dank-greeter,
     ...
   }: let
     system = "x86_64-linux";
@@ -40,6 +46,7 @@
         ./configuration.nix
         grub2-themes.nixosModules.default
         lanzaboote.nixosModules.lanzaboote
+        dank-greeter.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager = {

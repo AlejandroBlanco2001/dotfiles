@@ -60,12 +60,10 @@
   };
   services.displayManager.ly.enable = false;
 
-  services.greetd = {
+  programs.dms-greeter = {
     enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --asterisks --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --cmd niri-session";
-      user = "greeter";
-    };
+    compositor.name = "niri";
+    configHome = "/home/isaac";
   };
 
   hardware.bluetooth = {
