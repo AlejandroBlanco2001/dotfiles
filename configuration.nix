@@ -187,6 +187,8 @@
     discord
     chromium
     zoxide
+    gnumake
+    sccache
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
