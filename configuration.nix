@@ -189,6 +189,7 @@
     zoxide
     gnumake
     sccache
+    distrobox
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
