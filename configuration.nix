@@ -190,6 +190,8 @@
     gnumake
     sccache
     distrobox
+    gh
+    telegram-desktop
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
