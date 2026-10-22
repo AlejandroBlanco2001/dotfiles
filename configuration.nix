@@ -137,6 +137,7 @@
       lt = "eza --tree --level=2 --icons";
       reload = "exec zsh";
       configs = "nvim ~/nixos-dotfiles";
+      lazydocker = "DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock lazydocker";
     };
 
     interactiveShellInit = ''
@@ -192,6 +193,12 @@
     distrobox
     gh
     telegram-desktop
+    awscli2
+    openssl
+    lazydocker
+    openshell
+    obs-studio
+    mpv
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
@@ -217,6 +224,10 @@
   };
 
   programs.chromium = {
+    enable = true;
+  };
+
+  programs.obs-studio = {
     enable = true;
   };
 
