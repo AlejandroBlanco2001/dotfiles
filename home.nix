@@ -1,52 +1,60 @@
-{ config, pkgs, ... }:
-
 {
-    home.username = "isaac";
-    home.homeDirectory = "/home/isaac";
+  config,
+  pkgs,
+  dsearch,
+  ...
+}: {
+  imports = [ dsearch.homeModules.default ];
+  home.username = "isaac";
+  home.homeDirectory = "/home/isaac";
 
-    programs.git = {
-      enable = true;
-      settings = {
-        user.email = "nuclearhands2001@gmail.com";
-        user.name  = "Isaac Blanco";
-      };
+  programs.git = {
+    enable = true;
+    settings = {
+      user.email = "nuclearhands2001@gmail.com";
+      user.name = "Isaac Blanco";
     };
- 
-    home.stateVersion = "26.05";
-    
-    programs.bash = {
-      enable = true;
-      shellAliases = {
-        btw = "echo I use nixOS, btw";
-      };
+  };
+
+  home.stateVersion = "26.05";
+
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      btw = "echo I use nixOS, btw";
     };
-    
-    programs.ghostty = {
-      enable = true;
+  };
 
-      settings = {
-        theme = "Catppuccin Mocha";
-        font-size = 14;
-        background-opacity = 0.8;
-      };
+  programs.ghostty = {
+    enable = true;
 
-      enableZshIntegration = true;
+    settings = {
+      theme = "Catppuccin Mocha";
+      font-size = 14;
+      background-opacity = 0.8;
     };
 
-    xdg.configFile."niri/config.kdl".source = ./config/niri/config.kdl;
-    xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-dotfiles/config/nvim";
+    enableZshIntegration = true;
+  };
 
-    home.packages = with pkgs; [
-      nil
-      nixpkgs-fmt
-      nodejs
-      neovim
-      gcc
-      fzf
-      ripgrep
-      fd
-      lua-language-server
-      tree-sitter
-      btop
-    ];
+  programs.dsearch = {
+    enable = true;
+  };
+
+  xdg.configFile."niri/config.kdl".source = ./config/niri/config.kdl;
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-dotfiles/config/nvim";
+
+  home.packages = with pkgs; [
+    nil
+    nixpkgs-fmt
+    nodejs
+    neovim
+    gcc
+    fzf
+    ripgrep
+    fd
+    lua-language-server
+    tree-sitter
+    btop
+  ];
 }

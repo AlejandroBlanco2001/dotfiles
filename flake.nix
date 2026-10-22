@@ -22,6 +22,11 @@
       url = "github:AvengeMedia/dank-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dsearch = {
+      url = "github:duxlabs-dev/dux-search";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -32,6 +37,7 @@
     lanzaboote,
     grub2-themes,
     dank-greeter,
+    dsearch,
     ...
   }: let
     system = "x86_64-linux";
@@ -54,7 +60,7 @@
             useUserPackages = true;
 
             extraSpecialArgs = {
-              inherit ghostty;
+              inherit ghostty dsearch;
             };
 
             users.isaac = import ./home.nix;
