@@ -2,6 +2,8 @@
   description = "NixOS";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +40,7 @@
     grub2-themes,
     dank-greeter,
     dsearch,
+    llm-agents,
     ...
   }: let
     system = "x86_64-linux";
@@ -48,6 +51,11 @@
   in {
     nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
       inherit system;
+
+      specialArgs = {
+        inherit llm-agents;
+      };
+
       modules = [
         ./configuration.nix
         grub2-themes.nixosModules.default

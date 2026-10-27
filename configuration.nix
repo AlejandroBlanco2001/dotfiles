@@ -5,6 +5,7 @@
   config,
   lib,
   pkgs,
+  llm-agents,
   ...
 }: {
   imports = [
@@ -173,7 +174,6 @@
     sbctl
     podman-compose
     tuigreet
-    opencode
     nixd
     jq
     alejandra
@@ -202,8 +202,7 @@
     grim
     slurp
     wl-clipboard
-    nautilus
-    loupe
+    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
