@@ -639,4 +639,6 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     Mod+Space { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+
+    Mod+Shift+S { spawn-sh "mkdir -p ~/Pictures/Screenshots && grim -g \"$(slurp)\" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy"; }
 }

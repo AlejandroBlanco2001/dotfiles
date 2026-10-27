@@ -199,6 +199,11 @@
     openshell
     obs-studio
     mpv
+    grim
+    slurp
+    wl-clipboard
+    nautilus
+    loupe
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
         [
