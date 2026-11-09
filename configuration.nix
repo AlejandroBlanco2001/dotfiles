@@ -153,6 +153,10 @@
         "uv"
         "themes"
         "rust"
+        "podman"
+        "node"
+        "npm"
+        "python"
       ];
       theme = "mortalscumbag";
     };
