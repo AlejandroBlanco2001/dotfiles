@@ -139,6 +139,27 @@
       reload = "exec zsh";
       config = "nvim ~/nixos-dotfiles";
       lazydocker = "DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock lazydocker";
+
+      # Terminal
+      c = "clear";
+      cls = "clear; ls";
+
+      # History
+      h = "history";
+      h10 = "history 10";
+      hr = "history | rg";
+
+      # Navigation
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+
+      # Docker (Podman)
+      d = "docker";
+      dps = "docker ps";
+      dpsa = "docker ps --all";
+      dbuild = "docker build";
+      dbuildx = "docker buildx build";
     };
 
     interactiveShellInit = ''
