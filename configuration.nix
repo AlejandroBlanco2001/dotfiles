@@ -137,7 +137,7 @@
       la = "eza -la --icons --group-directories-first";
       lt = "eza --tree --level=2 --icons";
       reload = "exec zsh";
-      configs = "nvim ~/nixos-dotfiles";
+      config = "nvim ~/nixos-dotfiles";
       lazydocker = "DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock lazydocker";
     };
 
