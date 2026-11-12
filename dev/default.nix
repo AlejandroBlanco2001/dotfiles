@@ -5,5 +5,6 @@
     ./r
     ./rust
     ./ts
+    ./tools
   ];
 }

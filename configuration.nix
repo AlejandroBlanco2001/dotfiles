@@ -190,19 +190,10 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
-    claude-code
-    neovim
-    lazygit
     sbctl
-    podman-compose
     tuigreet
     nixd
-    jq
     alejandra
-    tmux
     eza
     wl-clipboard
     moonlight-qt
@@ -218,14 +209,9 @@
     distrobox
     gh
     telegram-desktop
-    awscli2
-    openssl
-    lazydocker
-    openshell
     obs-studio
     mpv
     grim
-    slurp
     wl-clipboard
     llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
     (vscode-with-extensions.override {
